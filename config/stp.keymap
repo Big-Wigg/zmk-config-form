@@ -1,17 +1,26 @@
 #include <dt-bindings/zmk/reset.h>
 #include <dt-bindings/zmk/stp.h>
+#include <dt-bindings/zmk/mouse.h>
+#include "studio-macros.dtsi"
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/backlight.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/mouse.h>
-
-#include "studio-macros.dtsi"
 
 / {
     behaviors {
         #include "version.dtsi"
     };
+
+    macros {
+        acm2p: acm2p {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp A>;
+            label = "ACM2P";
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -42,7 +51,7 @@
             bindings = <
 &studio_unlock  &kp C_MUTE  &kp C_VOL_DN     &kp C_VOL_UP  &kp C_PREV  &kp C_PP        &kp C_NEXT     &bl BL_DEC  &bl BL_INC  &kp C_BRI_DN  &kp C_BRI_UP  &bt BT_CLR  &stp STP_BAT  &trans  &none  &none
 &none           &none       &none            &none         &none       &none           &none          &none       &none       &none         &none         &none       &none         &none   &none
-&none           &Win_Cut       &kp C_MEDIA_WWW  &none         &none       &kp C_MEDIA_TV  &none          &none       &none       &none         &none         &none       &none         &none   &none
+&none           &Win_Cut    &kp C_MEDIA_WWW  &none         &none       &kp C_MEDIA_TV  &none          &none       &none       &none         &none         &none       &none         &none   &none
 &none           &none       &none            &none         &none       &none           &kp C_AC_HOME  &none       &none       &none         &none         &none       &none         &none
 &none           &none       &none            &none         &macro_ver  &kp C_AC_BACK   &none          &none       &none       &none         &none         &none       &none         &none
                 &none       &none            &none         &none       &none           &none          &none       &none       &none         &none         &none
