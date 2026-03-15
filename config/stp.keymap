@@ -28,11 +28,20 @@
             bindings = <&kp LALT>, <&kp LGUI>;
         };
 
+        CAPS_WORD_LOCK: CAPS_WORD_LOCK {
+            compatible = "zmk,behavior-hold-tap";
+            label = "CAPS_WORD_LOCK";
+            #binding-cells = <1>;
+            tapping-term-ms = <170>;
+            flavor = "hold-preferred";
+            bindings = <&kp>, <&caps_word>;
+        };
+
         LEFT_SPACE: LEFT_SPACE {
             compatible = "zmk,behavior-tap-dance";
             label = "LEFT_SPACE";
             #binding-cells = <0>;
-            bindings = <&TH LSHIFT SPACE>, <&caps_word>, <&kp CLCK>;
+            bindings = <&TH LSHIFT SPACE>, <&kp SPACE>, <&CAPS_WORD_LOCK CLCK>;
         };
 
         HOME_END: HOME_END {
