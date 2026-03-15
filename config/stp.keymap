@@ -24,18 +24,18 @@
         SHIFT_ENTER: SHIFT_ENTER {
             compatible = "zmk,behavior-hold-tap";
             label = "SHIFT_ENTER";
-            #binding-cells = <2>;
+            #binding-cells = <1>;
             tapping-term-ms = <320>;
             flavor = "tap-preferred";
-            bindings = <&kp>, <&kp>;
+            bindings = <&shift_ret>, <&kp>;
         };
 
         CAPS_WORD_SPACE: CAPS_WORD_SPACE {
             compatible = "zmk,behavior-hold-tap";
             label = "CAPS_WORD_SPACE";
             #binding-cells = <2>;
-            tapping-term-ms = <170>;
-            flavor = "hold-preferred";
+            tapping-term-ms = <210>;
+            flavor = "tap-preferred";
             bindings = <&caps_word>, <&kp>;
         };
 
@@ -94,6 +94,15 @@
     };
 
     macros {
+        shift_ret: shift_ret {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <30>;
+            bindings = <&macro_press &kp LSHFT>, <&macro_tap &kp RET>, <&macro_release &kp LSHFT>;
+            label = "SHIFT_RET";
+        };
+
         AC_FRO: AC_FRO {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -159,7 +168,7 @@
 &kp GRAVE  &TH LA(LC(N2)) LA(LC(N1))  &RPN   &BW_CP  &none      &kp BSPC  &kp DELETE  &none  &none  &none  &none      &kp MINUS  &kp EQUAL  &kp BSPC  &none  &none
 &kp ESC    &kp N1                     &kp N2  &kp N3   &kp N4      &kp N5     &kp N6      &kp N7  &kp N8  &kp N9  &kp N0     &kp MINUS  &kp EQUAL  &kp BACKSPACE  &kp HOME
 &kp TAB    &kp Q                      &kp W   &kp E    &kp R       &kp T      &kp Y       &kp U   &kp I   &kp O   &kp P      &kp LBKT   &kp RBKT   &kp BSLH       &kp END
-&tog 3     &kp A                      &kp S   &kp D    &kp F       &kp G      &kp H       &kp J   &kp K   &kp L   &kp SEMI   &kp SQT    &SHIFT_ENTER LS(RET) RET  &kp PG_UP
+&tog 3     &kp A                      &kp S   &kp D    &kp F       &kp G      &kp H       &kp J   &kp K   &kp L   &kp SEMI   &kp SQT    &SHIFT_ENTER RET  &kp PG_UP
 &mo 3      &kp Z                      &kp X   &kp C    &kp V       &kp B      &kp N       &kp M   &kp COMMA  &kp DOT  &kp FSLH  &mo 3      &kp UP     &kp PG_DN
            &ALT_WIN                   &tog 4  &kp LCTRL  &LEFT_SPACE  &RIGHT_SPACE  &kp RCTRL  &ROW_MODE 0 1  &kp RALT  &kp LEFT  &kp DOWN  &kp RIGHT
             >;
@@ -172,7 +181,7 @@
 &kp GRAVE  &kp F1  &kp F2  &kp F3  &kp F4  &kp F5  &kp F6  &kp F7  &kp F8  &kp F9  &kp F10  &kp F11  &kp F12  &Win_Snip_Tool  &kp DEL  &kp INS
 &kp ESC    &kp N1  &kp N2  &kp N3  &kp N4  &kp N5  &kp N6  &kp N7  &kp N8  &kp N9  &kp N0   &kp MINUS  &kp EQUAL  &kp BACKSPACE  &kp HOME
 &kp TAB    &kp Q   &kp W   &kp E   &kp R   &kp T   &kp Y   &kp U   &kp I   &kp O   &kp P    &kp LBKT   &kp RBKT   &kp BSLH       &kp END
-&tog 3     &kp A   &kp S   &kp D   &kp F   &kp G   &kp H   &kp J   &kp K   &kp L   &kp SEMI  &kp SQT    &SHIFT_ENTER LS(RET) RET  &kp PG_UP
+&tog 3     &kp A   &kp S   &kp D   &kp F   &kp G   &kp H   &kp J   &kp K   &kp L   &kp SEMI  &kp SQT    &SHIFT_ENTER RET  &kp PG_UP
 &mo 3      &kp Z   &kp X   &kp C   &kp V   &kp B   &kp N   &kp M   &kp COMMA  &kp DOT  &kp FSLH  &mo 3   &kp UP  &kp PG_DN
            &ALT_WIN  &tog 4  &kp LCTRL  &LEFT_SPACE  &RIGHT_SPACE  &kp RCTRL  &ROW_MODE 0 2  &kp RALT  &kp LEFT  &kp DOWN  &kp RIGHT
             >;
@@ -185,7 +194,7 @@
 &kp GRAVE  &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP  &kp C_PREV  &kp C_PP  &kp C_NEXT  &bl BL_DEC  &bl BL_INC  &kp C_BRI_DN  &kp C_BRI_UP  &macro_ver  &stp STP_BAT  &Win_Snip_Tool  &none  &none
 &kp ESC    &kp N1      &kp N2        &kp N3        &kp N4      &kp N5    &kp N6      &kp N7      &kp N8      &kp N9        &kp N0        &kp MINUS   &kp EQUAL     &kp BACKSPACE  &kp HOME
 &kp TAB    &kp Q       &kp W         &kp E         &kp R       &kp T     &kp Y       &kp U       &kp I       &kp O         &kp P         &kp LBKT    &kp RBKT      &kp BSLH       &kp END
-&tog 3     &kp A       &kp S         &kp D         &kp F       &kp G     &kp H       &kp J       &kp K       &kp L         &kp SEMI      &kp SQT     &SHIFT_ENTER LS(RET) RET  &kp PG_UP
+&tog 3     &kp A       &kp S         &kp D         &kp F       &kp G     &kp H       &kp J       &kp K       &kp L         &kp SEMI      &kp SQT     &SHIFT_ENTER RET  &kp PG_UP
 &mo 3      &kp Z       &kp X         &kp C         &kp V       &kp B     &kp N       &kp M       &kp COMMA   &kp DOT       &kp FSLH      &mo 3      &kp UP        &kp PG_DN
            &ALT_WIN    &tog 4        &kp LCTRL     &LEFT_SPACE  &RIGHT_SPACE  &kp RCTRL  &ROW_MODE 0 0  &kp RALT  &kp LEFT  &kp DOWN  &kp RIGHT
             >;
