@@ -31,7 +31,7 @@
         CAPS_WORD_LOCK: CAPS_WORD_LOCK {
             compatible = "zmk,behavior-hold-tap";
             label = "CAPS_WORD_LOCK";
-            #binding-cells = <1>;
+            #binding-cells = <2>;
             tapping-term-ms = <170>;
             flavor = "hold-preferred";
             bindings = <&kp>, <&caps_word>;
