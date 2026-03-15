@@ -48,6 +48,15 @@
             bindings = <&caps_word>, <&kp>;
         };
 
+        SPACE_SHIFT: SPACE_SHIFT {
+            compatible = "zmk,behavior-hold-tap";
+            label = "SPACE_SHIFT";
+            #binding-cells = <2>;
+            tapping-term-ms = <190>;
+            flavor = "hold-preferred";
+            bindings = <&kp>, <&kp>;
+        };
+
         ALT_WIN: ALT_WIN {
             compatible = "zmk,behavior-tap-dance";
             label = "ALT_WIN";
@@ -71,20 +80,12 @@
             bindings = <&kp INS>, <&BOOT_INS 0 INS>;
         };
 
-        LEFT_SPACE_TD: LEFT_SPACE_TD {
-            compatible = "zmk,behavior-tap-dance";
-            label = "LEFT_SPACE_TD";
-            #binding-cells = <0>;
-            bindings = <&kp SPACE>, <&CAPS_WORD_SPACE 0 SPACE>;
-        };
-
         LEFT_SPACE: LEFT_SPACE {
-            compatible = "zmk,behavior-hold-tap";
+            compatible = "zmk,behavior-tap-dance";
             label = "LEFT_SPACE";
-            #binding-cells = <2>;
-            tapping-term-ms = <160>;
-            flavor = "hold-preferred";
-            bindings = <&kp>, <&LEFT_SPACE_TD>;
+            #binding-cells = <0>;
+            tapping-term-ms = <220>;
+            bindings = <&SPACE_SHIFT LSHIFT SPACE>, <&CAPS_WORD_SPACE 0 SPACE>;
         };
 
         HOME_END: HOME_END {
@@ -96,20 +97,12 @@
             bindings = <&kp>, <&kp>;
         };
 
-        RIGHT_SPACE_TD: RIGHT_SPACE_TD {
-            compatible = "zmk,behavior-tap-dance";
-            label = "RIGHT_SPACE_TD";
-            #binding-cells = <0>;
-            bindings = <&kp SPACE>, <&HOME_END END HOME>;
-        };
-
         RIGHT_SPACE: RIGHT_SPACE {
-            compatible = "zmk,behavior-hold-tap";
+            compatible = "zmk,behavior-tap-dance";
             label = "RIGHT_SPACE";
-            #binding-cells = <2>;
-            tapping-term-ms = <160>;
-            flavor = "hold-preferred";
-            bindings = <&kp>, <&RIGHT_SPACE_TD>;
+            #binding-cells = <0>;
+            tapping-term-ms = <220>;
+            bindings = <&SPACE_SHIFT LSHIFT SPACE>, <&HOME_END END HOME>;
         };
 
         BW_CP: BW_CP {
@@ -221,7 +214,7 @@
 &kp TAB    &kp Q                      &kp W   &kp E    &kp R       &kp T      &kp Y       &kp U   &kp I   &kp O   &kp P      &kp LBKT   &kp RBKT   &kp BSLH       &kp END
 &tog 3     &kp A                      &kp S   &kp D    &kp F       &kp G      &kp H       &kp J   &kp K   &kp L   &kp SEMI   &kp SQT    &SHIFT_ENTER 0 RET  &kp PG_UP
 &mo 3      &kp Z                      &kp X   &kp C    &kp V       &kp B      &kp N       &kp M   &kp COMMA  &kp DOT  &kp FSLH  &mo 3      &kp UP     &kp PG_DN
-           &ALT_WIN                   &tog 4  &kp LCTRL  &LEFT_SPACE LSHIFT 0  &RIGHT_SPACE LSHIFT 0  &kp RCTRL  &ROW_MODE 0 1  &kp RALT  &kp LEFT  &kp DOWN  &kp RIGHT
+           &ALT_WIN                   &tog 4  &kp LCTRL  &LEFT_SPACE  &RIGHT_SPACE  &kp RCTRL  &ROW_MODE 0 1  &kp RALT  &kp LEFT  &kp DOWN  &kp RIGHT
             >;
         };
 
@@ -234,7 +227,7 @@
 &kp TAB    &kp Q   &kp W   &kp E   &kp R   &kp T   &kp Y   &kp U   &kp I   &kp O   &kp P    &kp LBKT   &kp RBKT   &kp BSLH       &kp END
 &tog 3     &kp A   &kp S   &kp D   &kp F   &kp G   &kp H   &kp J   &kp K   &kp L   &kp SEMI  &kp SQT    &SHIFT_ENTER 0 RET  &kp PG_UP
 &mo 3      &kp Z   &kp X   &kp C   &kp V   &kp B   &kp N   &kp M   &kp COMMA  &kp DOT  &kp FSLH  &mo 3   &kp UP  &kp PG_DN
-           &ALT_WIN  &tog 4  &kp LCTRL  &LEFT_SPACE LSHIFT 0  &RIGHT_SPACE LSHIFT 0  &kp RCTRL  &ROW_MODE 0 2  &kp RALT  &kp LEFT  &kp DOWN  &kp RIGHT
+           &ALT_WIN  &tog 4  &kp LCTRL  &LEFT_SPACE  &RIGHT_SPACE  &kp RCTRL  &ROW_MODE 0 2  &kp RALT  &kp LEFT  &kp DOWN  &kp RIGHT
             >;
         };
 
@@ -247,7 +240,7 @@
 &kp TAB    &kp Q       &kp W         &kp E         &kp R       &kp T     &kp Y       &kp U       &kp I       &kp O         &kp P         &kp LBKT    &kp RBKT      &kp BSLH       &kp END
 &tog 3     &kp A       &kp S         &kp D         &kp F       &kp G     &kp H       &kp J       &kp K       &kp L         &kp SEMI      &kp SQT     &SHIFT_ENTER 0 RET  &kp PG_UP
 &mo 3      &kp Z       &kp X         &kp C         &kp V       &kp B     &kp N       &kp M       &kp COMMA   &kp DOT       &kp FSLH      &mo 3      &kp UP        &kp PG_DN
-           &ALT_WIN    &tog 4        &kp LCTRL     &LEFT_SPACE LSHIFT 0  &RIGHT_SPACE LSHIFT 0  &kp RCTRL  &ROW_MODE 0 0  &kp RALT  &kp LEFT  &kp DOWN  &kp RIGHT
+           &ALT_WIN    &tog 4        &kp LCTRL     &LEFT_SPACE  &RIGHT_SPACE  &kp RCTRL  &ROW_MODE 0 0  &kp RALT  &kp LEFT  &kp DOWN  &kp RIGHT
             >;
         };
 
