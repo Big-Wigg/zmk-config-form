@@ -36,7 +36,7 @@
             #binding-cells = <2>;
             tapping-term-ms = <170>;
             flavor = "hold-preferred";
-            bindings = <&kp>, <&caps_word>;
+            bindings = <&caps_word>, <&kp>;
         };
 
         ALT_WIN: ALT_WIN {
@@ -50,7 +50,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "LEFT_SPACE";
             #binding-cells = <0>;
-            bindings = <&TH LSHIFT SPACE>, <&CAPS_WORD_SPACE SPACE>, <&kp CLCK>;
+            bindings = <&TH LSHIFT SPACE>, <&CAPS_WORD_SPACE 0 SPACE>, <&kp CLCK>;
         };
 
         HOME_END: HOME_END {
