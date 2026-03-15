@@ -25,8 +25,8 @@
             compatible = "zmk,behavior-hold-tap";
             label = "SHIFT_ENTER";
             #binding-cells = <2>;
-            tapping-term-ms = <260>;
-            flavor = "hold-preferred";
+            tapping-term-ms = <320>;
+            flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
         };
 
@@ -50,7 +50,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "LEFT_SPACE";
             #binding-cells = <0>;
-            bindings = <&TH LSHIFT SPACE>, <&CAPS_WORD_SPACE 0 SPACE>, <&kp CLCK>;
+            bindings = <&TH LSHIFT SPACE>, <&CAPS_WORD_SPACE 0 SPACE>;
         };
 
         HOME_END: HOME_END {
@@ -134,6 +134,18 @@
             #binding-cells = <0>;
             bindings = <&kp DOT &kp Y &kp RET>;
             label = "AC_Y";
+        };
+    };
+
+    combos {
+        compatible = "zmk,combos";
+
+        caps_lock_combo {
+            timeout-ms = <500>;
+            slow-release;
+            key-positions = <77 78>;
+            bindings = <&kp CLCK>;
+            layers = <0 1 2>;
         };
     };
 
