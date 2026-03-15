@@ -43,8 +43,8 @@
             compatible = "zmk,behavior-hold-tap";
             label = "CAPS_WORD_SPACE";
             #binding-cells = <2>;
-            tapping-term-ms = <210>;
-            flavor = "tap-preferred";
+            tapping-term-ms = <150>;
+            flavor = "hold-preferred";
             bindings = <&caps_word>, <&kp>;
         };
 
@@ -52,7 +52,7 @@
             compatible = "zmk,behavior-hold-tap";
             label = "SPACE_SHIFT";
             #binding-cells = <2>;
-            tapping-term-ms = <190>;
+            tapping-term-ms = <150>;
             flavor = "hold-preferred";
             bindings = <&kp>, <&kp>;
         };
@@ -84,7 +84,6 @@
             compatible = "zmk,behavior-tap-dance";
             label = "LEFT_SPACE";
             #binding-cells = <0>;
-            tapping-term-ms = <220>;
             bindings = <&SPACE_SHIFT LSHIFT SPACE>, <&CAPS_WORD_SPACE 0 SPACE>;
         };
 
@@ -92,7 +91,7 @@
             compatible = "zmk,behavior-hold-tap";
             label = "HOME_END";
             #binding-cells = <2>;
-            tapping-term-ms = <170>;
+            tapping-term-ms = <150>;
             flavor = "hold-preferred";
             bindings = <&kp>, <&kp>;
         };
@@ -101,7 +100,6 @@
             compatible = "zmk,behavior-tap-dance";
             label = "RIGHT_SPACE";
             #binding-cells = <0>;
-            tapping-term-ms = <220>;
             bindings = <&SPACE_SHIFT LSHIFT SPACE>, <&HOME_END END HOME>;
         };
 
