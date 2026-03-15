@@ -1,60 +1,189 @@
 #include <dt-bindings/zmk/reset.h>
 #include <dt-bindings/zmk/stp.h>
-#include <dt-bindings/zmk/mouse.h>
-#include "studio-macros.dtsi"
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/backlight.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/mouse.h>
+
+#include "studio-macros.dtsi"
 
 / {
     behaviors {
         #include "version.dtsi"
+
+        TH: TH {
+            compatible = "zmk,behavior-hold-tap";
+            label = "TH";
+            #binding-cells = <2>;
+            tapping-term-ms = <150>;
+            flavor = "hold-preferred";
+            bindings = <&kp>, <&kp>;
+        };
+
+        ALT_WIN: ALT_WIN {
+            compatible = "zmk,behavior-tap-dance";
+            label = "ALT_WIN";
+            #binding-cells = <0>;
+            bindings = <&kp LALT>, <&kp LGUI>;
+        };
+
+        LEFT_SPACE: LEFT_SPACE {
+            compatible = "zmk,behavior-tap-dance";
+            label = "LEFT_SPACE";
+            #binding-cells = <0>;
+            bindings = <&TH LSHIFT SPACE>, <&caps_word>, <&kp CLCK>;
+        };
+
+        HOME_END: HOME_END {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOME_END";
+            #binding-cells = <2>;
+            tapping-term-ms = <170>;
+            flavor = "hold-preferred";
+            bindings = <&kp>, <&kp>;
+        };
+
+        RIGHT_SPACE: RIGHT_SPACE {
+            compatible = "zmk,behavior-tap-dance";
+            label = "RIGHT_SPACE";
+            #binding-cells = <0>;
+            bindings = <&TH LSHIFT SPACE>, <&HOME_END END HOME>;
+        };
+
+        BW_CP: BW_CP {
+            compatible = "zmk,behavior-tap-dance";
+            label = "BW_CP";
+            #binding-cells = <0>;
+            bindings = <&TH LC(A) LC(C)>, <&TH LC(X) LC(V)>;
+        };
+
+        RPN: RPN {
+            compatible = "zmk,behavior-tap-dance";
+            label = "RPN";
+            #binding-cells = <0>;
+            bindings = <&TH LC(LA(N4)) LC(LA(N3))>, <&TH LC(LA(N6)) LC(LA(N5))>;
+        };
+
+        ROW_MODE: ROW_MODE {
+            compatible = "zmk,behavior-hold-tap";
+            label = "ROW_MODE";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "hold-preferred";
+            bindings = <&to>, <&to>;
+        };
     };
 
     macros {
-        acm2p: acm2p {
+        AC_FRO: AC_FRO {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp A>;
-            label = "ACM2P";
+            bindings = <&kp F &kp R &kp O &kp RET>;
+            label = "AC_FRO";
+        };
+
+        AC_M2P: AC_M2P {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp M &kp N2 &kp P &kp RET>;
+            label = "AC_M2P";
+        };
+
+        AC_END: AC_END {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp E &kp N &kp D &kp RET>;
+            label = "AC_END";
+        };
+
+        AC_MID: AC_MID {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp M &kp I &kp D &kp RET>;
+            label = "AC_MID";
+        };
+
+        AC_X: AC_X {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp DOT &kp X &kp RET>;
+            label = "AC_X";
+        };
+
+        AC_Y: AC_Y {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp DOT &kp Y &kp RET>;
+            label = "AC_Y";
         };
     };
 
     keymap {
         compatible = "zmk,keymap";
 
-        default_layer {
-            display-name = "Base";
-
-            // -----------------------------------------------------------------------------------------------------------
-            // | ESC | F1  | F2  | F3  | F4  | F5  | F6  | F7  | F9  | F9  | F10 | F11 | F12 | 1 | DEL | INS    |
-            // |  `  |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  0  |  -  |  =  |   BKSP   | HOME  |
-            // | TAB  |  Q  |  W  |  E  |  R  |  T  |  Y  |  U  |  I  |  O  |  P  |  [  |  ]  |    \    | END |
-            // | CAPS  |  A  |  S  |  D  |  F  |  G  |  H  |  J  |  K  |  L  |  ;  |  '  |     ENTER     | PG UP |
-            // |  SHIFT    |  Z  |  X  |  C  |  V  |  B  |  N  |  M  |  ,  |  .  | /   |    SHIFT |  UP  |  PG DN  |
-            // |  CTL  |  WIN  |  ALT  |   SPACE   |  |  SPACE    | CTRL | MENU | ALT |  LEFT | DOWN | RIGHT |
-            // ------------------------------------------------------------------------------------------------------------
+        macro_row {
+            display-name = "360";
 
             bindings = <
-&kp ESC    &kp F1     &kp F2    &kp F3    &kp F4     &kp F5     &kp F6     &kp F7     &kp F8     &kp F9    &kp F10   &kp F11    &kp F12    &mo 1          &kp DEL   &kp INS
-&kp GRAVE  &kp N1     &kp N2    &kp N3    &kp N4     &kp N5     &kp N6     &kp N7     &kp N8     &kp N9    &kp N0    &kp MINUS  &kp EQUAL  &kp BACKSPACE  &kp HOME
-&kp TAB    &kp Q      &kp W     &kp E     &kp R      &kp T      &kp Y      &kp U      &kp I      &kp O     &kp P     &kp LBKT   &kp RBKT   &kp BSLH       &kp END
-&kp CLCK   &kp A      &kp S     &kp D     &kp F      &kp G      &kp H      &kp J      &kp K      &kp L     &kp SEMI  &kp SQT    &kp RET    &kp PG_UP
-&kp LSHFT  &kp Z      &kp X     &kp C     &kp V      &kp B      &kp N      &kp M      &kp COMMA  &kp DOT   &kp FSLH  &kp RSHFT  &kp UP     &kp PG_DN
-           &kp LCTRL  &kp LGUI  &kp LALT  &kp SPACE  &kp SPACE  &kp RCTRL  &kp K_APP  &kp RALT   &kp LEFT  &kp DOWN  &kp RIGHT
+&kp GRAVE  &TH LA(LC(N2)) LA(LC(N1))  &RPN   &BW_CP  &none      &kp BSPC  &kp DELETE  &none  &none  &none  &none      &kp MINUS  &kp EQUAL  &kp BSPC  &none  &none
+&kp ESC    &kp N1                     &kp N2  &kp N3   &kp N4      &kp N5     &kp N6      &kp N7  &kp N8  &kp N9  &kp N0     &kp MINUS  &kp EQUAL  &kp BACKSPACE  &kp HOME
+&kp TAB    &kp Q                      &kp W   &kp E    &kp R       &kp T      &kp Y       &kp U   &kp I   &kp O   &kp P      &kp LBKT   &kp RBKT   &kp BSLH       &kp END
+&tog 3     &kp A                      &kp S   &kp D    &kp F       &kp G      &kp H       &kp J   &kp K   &kp L   &kp SEMI   &kp SQT    &kp RET    &kp PG_UP
+&mo 3      &kp Z                      &kp X   &kp C    &kp V       &kp B      &kp N       &kp M   &kp COMMA  &kp DOT  &kp FSLH  &mo 3      &kp UP     &kp PG_DN
+           &ALT_WIN                   &tog 4  &kp LCTRL  &LEFT_SPACE  &RIGHT_SPACE  &kp RCTRL  &ROW_MODE 0 1  &kp RALT  &kp LEFT  &kp DOWN  &kp RIGHT
             >;
         };
 
-        raise {
+        function_row {
             display-name = "Fn";
+
             bindings = <
-&studio_unlock  &kp C_MUTE  &kp C_VOL_DN     &kp C_VOL_UP  &kp C_PREV  &kp C_PP        &kp C_NEXT     &bl BL_DEC  &bl BL_INC  &kp C_BRI_DN  &kp C_BRI_UP  &bt BT_CLR  &stp STP_BAT  &trans  &none  &none
-&none           &none       &none            &none         &none       &none           &none          &none       &none       &none         &none         &none       &none         &none   &none
-&none           &Win_Cut    &kp C_MEDIA_WWW  &none         &none       &kp C_MEDIA_TV  &none          &none       &none       &none         &none         &none       &none         &none   &none
-&none           &none       &none            &none         &none       &none           &kp C_AC_HOME  &none       &none       &none         &none         &none       &none         &none
-&none           &none       &none            &none         &macro_ver  &kp C_AC_BACK   &none          &none       &none       &none         &none         &none       &none         &none
-                &none       &none            &none         &none       &none           &none          &none       &none       &none         &none         &none
+&kp GRAVE  &kp F1  &kp F2  &kp F3  &kp F4  &kp F5  &kp F6  &kp F7  &kp F8  &kp F9  &kp F10  &kp F11  &kp F12  &Win_Snip_Tool  &kp DEL  &kp INS
+&kp ESC    &kp N1  &kp N2  &kp N3  &kp N4  &kp N5  &kp N6  &kp N7  &kp N8  &kp N9  &kp N0   &kp MINUS  &kp EQUAL  &kp BACKSPACE  &kp HOME
+&kp TAB    &kp Q   &kp W   &kp E   &kp R   &kp T   &kp Y   &kp U   &kp I   &kp O   &kp P    &kp LBKT   &kp RBKT   &kp BSLH       &kp END
+&tog 3     &kp A   &kp S   &kp D   &kp F   &kp G   &kp H   &kp J   &kp K   &kp L   &kp SEMI  &kp SQT    &kp RET    &kp PG_UP
+&mo 3      &kp Z   &kp X   &kp C   &kp V   &kp B   &kp N   &kp M   &kp COMMA  &kp DOT  &kp FSLH  &mo 3   &kp UP  &kp PG_DN
+           &ALT_WIN  &tog 4  &kp LCTRL  &LEFT_SPACE  &RIGHT_SPACE  &kp RCTRL  &ROW_MODE 0 2  &kp RALT  &kp LEFT  &kp DOWN  &kp RIGHT
+            >;
+        };
+
+        media_row {
+            display-name = "Media";
+
+            bindings = <
+&kp GRAVE  &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP  &kp C_PREV  &kp C_PP  &kp C_NEXT  &bl BL_DEC  &bl BL_INC  &kp C_BRI_DN  &kp C_BRI_UP  &macro_ver  &stp STP_BAT  &Win_Snip_Tool  &none  &none
+&kp ESC    &kp N1      &kp N2        &kp N3        &kp N4      &kp N5    &kp N6      &kp N7      &kp N8      &kp N9        &kp N0        &kp MINUS   &kp EQUAL     &kp BACKSPACE  &kp HOME
+&kp TAB    &kp Q       &kp W         &kp E         &kp R       &kp T     &kp Y       &kp U       &kp I       &kp O         &kp P         &kp LBKT    &kp RBKT      &kp BSLH       &kp END
+&tog 3     &kp A       &kp S         &kp D         &kp F       &kp G     &kp H       &kp J       &kp K       &kp L         &kp SEMI      &kp SQT     &kp RET       &kp PG_UP
+&mo 3      &kp Z       &kp X         &kp C         &kp V       &kp B     &kp N       &kp M       &kp COMMA   &kp DOT       &kp FSLH      &mo 3      &kp UP        &kp PG_DN
+           &ALT_WIN    &tog 4        &kp LCTRL     &LEFT_SPACE  &RIGHT_SPACE  &kp RCTRL  &ROW_MODE 0 0  &kp RALT  &kp LEFT  &kp DOWN  &kp RIGHT
+            >;
+        };
+
+        keypad {
+            display-name = "Num";
+
+            bindings = <
+&trans  &trans         &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans         &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&kp TAB &TH DQT AT     &kp N7  &kp N8  &kp N9  &TH STAR FSLH   &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&tog 3  &TH DOT COMMA  &kp N4  &kp N5  &kp N6  &TH PLUS MINUS  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &TH RPAR LPAR  &kp N1  &kp N2  &kp N3  &kp EQUAL       &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+        &trans         &trans  &kp N0  &trans  &trans          &trans  &trans  &trans  &trans  &trans  &trans
+            >;
+        };
+
+        cad_layer {
+            display-name = "CAD";
+
+            bindings = <
+&trans  &trans  &trans   &trans   &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans   &trans   &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &AC_MID  &AC_END  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &AC_FRO  &AC_M2P  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &AC_X    &AC_Y    &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+        &trans  &trans   &trans   &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
 
