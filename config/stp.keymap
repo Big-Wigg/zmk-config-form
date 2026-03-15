@@ -34,7 +34,7 @@
             compatible = "zmk,behavior-hold-tap";
             label = "SHIFT_ENTER";
             #binding-cells = <2>;
-            tapping-term-ms = <320>;
+            tapping-term-ms = <160>;
             flavor = "tap-preferred";
             bindings = <&shift_ret>, <&kp>;
         };
