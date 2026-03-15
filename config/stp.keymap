@@ -24,10 +24,10 @@
         ESC_U: ESC_U {
             compatible = "zmk,behavior-hold-tap";
             label = "ESC_U";
-            #binding-cells = <0>;
+            #binding-cells = <2>;
             tapping-term-ms = <200>;
             flavor = "tap-preferred";
-            bindings = <&kp U>, <&kp ESC>;
+            bindings = <&kp>, <&kp>;
         };
 
         SHIFT_ENTER: SHIFT_ENTER {
@@ -198,8 +198,8 @@
             display-name = "360";
 
             bindings = <
-&ESC_U     &TH LA(LC(N2)) LA(LC(N1))  &RPN   &BW_CP  &none      &kp BSPC  &kp DEL     &none  &none  &none  &none      &none      &none      &none      &kp DEL  &INS_BOOT
-&ESC_U     &kp N1                     &kp N2  &kp N3   &kp N4      &kp N5     &kp N6      &kp N7  &kp N8  &kp N9  &kp N0     &kp MINUS  &kp EQUAL  &kp BACKSPACE  &kp HOME
+&ESC_U U ESC  &TH LA(LC(N2)) LA(LC(N1))  &RPN   &BW_CP  &none      &kp BSPC  &kp DEL     &none  &none  &none  &none      &none      &none      &none      &kp DEL  &INS_BOOT
+&ESC_U U ESC  &kp N1                     &kp N2  &kp N3   &kp N4      &kp N5     &kp N6      &kp N7  &kp N8  &kp N9  &kp N0     &kp MINUS  &kp EQUAL  &kp BACKSPACE  &kp HOME
 &kp TAB    &kp Q                      &kp W   &kp E    &kp R       &kp T      &kp Y       &kp U   &kp I   &kp O   &kp P      &kp LBKT   &kp RBKT   &kp BSLH       &kp END
 &tog 3     &kp A                      &kp S   &kp D    &kp F       &kp G      &kp H       &kp J   &kp K   &kp L   &kp SEMI   &kp SQT    &SHIFT_ENTER RET  &kp PG_UP
 &mo 3      &kp Z                      &kp X   &kp C    &kp V       &kp B      &kp N       &kp M   &kp COMMA  &kp DOT  &kp FSLH  &mo 3      &kp UP     &kp PG_DN
@@ -211,8 +211,8 @@
             display-name = "Fn";
 
             bindings = <
-&ESC_U     &kp F1  &kp F2  &kp F3  &kp F4  &kp F5  &kp F6  &kp F7  &kp F8  &kp F9  &kp F10  &kp F11  &kp F12  &Win_Snip_Tool  &kp DEL  &INS_BOOT
-&ESC_U     &kp N1  &kp N2  &kp N3  &kp N4  &kp N5  &kp N6  &kp N7  &kp N8  &kp N9  &kp N0   &kp MINUS  &kp EQUAL  &kp BACKSPACE  &kp HOME
+&ESC_U U ESC  &kp F1  &kp F2  &kp F3  &kp F4  &kp F5  &kp F6  &kp F7  &kp F8  &kp F9  &kp F10  &kp F11  &kp F12  &Win_Snip_Tool  &kp DEL  &INS_BOOT
+&ESC_U U ESC  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5  &kp N6  &kp N7  &kp N8  &kp N9  &kp N0   &kp MINUS  &kp EQUAL  &kp BACKSPACE  &kp HOME
 &kp TAB    &kp Q   &kp W   &kp E   &kp R   &kp T   &kp Y   &kp U   &kp I   &kp O   &kp P    &kp LBKT   &kp RBKT   &kp BSLH       &kp END
 &tog 3     &kp A   &kp S   &kp D   &kp F   &kp G   &kp H   &kp J   &kp K   &kp L   &kp SEMI  &kp SQT    &SHIFT_ENTER RET  &kp PG_UP
 &mo 3      &kp Z   &kp X   &kp C   &kp V   &kp B   &kp N   &kp M   &kp COMMA  &kp DOT  &kp FSLH  &mo 3   &kp UP  &kp PG_DN
@@ -224,8 +224,8 @@
             display-name = "Media";
 
             bindings = <
-&ESC_U     &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP  &kp C_PREV  &kp C_PP  &kp C_NEXT  &bl BL_DEC  &bl BL_INC  &kp C_BRI_DN  &kp C_BRI_UP  &macro_ver  &stp STP_BAT  &Win_Snip_Tool  &kp DEL  &INS_BOOT
-&ESC_U     &kp N1      &kp N2        &kp N3        &kp N4      &kp N5    &kp N6      &kp N7      &kp N8      &kp N9        &kp N0        &kp MINUS   &kp EQUAL     &kp BACKSPACE  &kp HOME
+&ESC_U U ESC  &kp C_MUTE  &kp C_VOL_DN  &kp C_VOL_UP  &kp C_PREV  &kp C_PP  &kp C_NEXT  &bl BL_DEC  &bl BL_INC  &kp C_BRI_DN  &kp C_BRI_UP  &macro_ver  &stp STP_BAT  &Win_Snip_Tool  &kp DEL  &INS_BOOT
+&ESC_U U ESC  &kp N1      &kp N2        &kp N3        &kp N4      &kp N5    &kp N6      &kp N7      &kp N8      &kp N9        &kp N0        &kp MINUS   &kp EQUAL     &kp BACKSPACE  &kp HOME
 &kp TAB    &kp Q       &kp W         &kp E         &kp R       &kp T     &kp Y       &kp U       &kp I       &kp O         &kp P         &kp LBKT    &kp RBKT      &kp BSLH       &kp END
 &tog 3     &kp A       &kp S         &kp D         &kp F       &kp G     &kp H       &kp J       &kp K       &kp L         &kp SEMI      &kp SQT     &SHIFT_ENTER RET  &kp PG_UP
 &mo 3      &kp Z       &kp X         &kp C         &kp V       &kp B     &kp N       &kp M       &kp COMMA   &kp DOT       &kp FSLH      &mo 3      &kp UP        &kp PG_DN
