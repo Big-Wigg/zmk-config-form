@@ -84,7 +84,8 @@
             compatible = "zmk,behavior-tap-dance";
             label = "LEFT_SPACE";
             #binding-cells = <0>;
-            bindings = <&SPACE_SHIFT LSHIFT SPACE>, <&CAPS_WORD_SPACE 0 SPACE>;
+            tapping-term-ms = <333>;
+            bindings = <&TH LSHIFT SPACE>, <&CAPS_WORD_SPACE 0 SPACE>;
         };
 
         HOME_END: HOME_END {
@@ -100,7 +101,8 @@
             compatible = "zmk,behavior-tap-dance";
             label = "RIGHT_SPACE";
             #binding-cells = <0>;
-            bindings = <&SPACE_SHIFT LSHIFT SPACE>, <&HOME_END END HOME>;
+            tapping-term-ms = <333>;
+            bindings = <&TH LSHIFT SPACE>, <&HOME_END END HOME>;
         };
 
         BW_CP: BW_CP {
